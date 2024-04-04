@@ -1,104 +1,75 @@
-  .brawler-regular {
-    font-family: "Brawler", serif;
-    font-weight: 400;
-    font-style: normal;
-  }
+/* FONTS */
   
-  .brawler-bold {
-    font-family: "Brawler", serif;
-    font-weight: 700;
-    font-style: normal;
-  }
+   .brawler-regular {
+      font-family: "Brawler", serif;
+      font-weight: 400;
+      font-style: normal;
+   }
+   
+   .brawler-bold {
+      font-family: "Brawler", serif;
+      font-weight: 700;
+      font-style:normal;
+   }
 
-  @font-face {
-    font-family: 'Sudo';
-    src: url('fonts/sudo/Sudo-Light.woff2') format('woff2');
-    src: url('fonts/sudo/Sudo-LightItalic.woff2') format('woff2');
-  }
+   @font-face {
+      font-family: 'Sudo';
+      src: url('fonts/sudo/Sudo-Light.woff2') format('woff2');
+      font-style: normal;
+   }
 
-  @font-face {
-    font-family: 'BlankSpaceGraffiti';
-    src: url('fonts/blank-space/BlankSpaceGraffiti.woff2') format('woff2');
-    src: url('fonts/blank-space/BlankSpaceGraffiti.woff') format('woff');
-    src: url('fonts/blank-space/BlankSpaceGraffiti.ttf') format('ttf');
-  }
+   @font-face {
+      font-family: 'Sudo';
+      src: url('fonts/sudo/Sudo-LightItalic.woff2') format('woff2');
+      font-style: italic;
+   }
 
-body{
-    margin: 0;
-    background-image: url("AdobeStock_281049891.jpeg");
-    background-size: cover;
-    background-attachment: fixed;
-    background-color: #F5F5F5;
-  }
+   @font-face {
+      font-family: 'BlankSpaceGraffiti';
+      src: url('fonts/blank-space/BlankSpaceGraffiti.woff2') format('woff2');
+      src: url('fonts/blank-space/BlankSpaceGraffiti.woff') format('woff');
+      src: url('fonts/blank-space/BlankSpaceGraffiti.ttf') format('ttf');
+   }
 
-  p, h1{
-    margin: 3vw;
-  }
-  h1{
-    font-family: 'Brawler';
-    font-size: 3.3em;
-    line-height: 1.35;
-    color: #6A6969;
-    width: 40vw;
-  }
+/* GLOBAL STYLES */
 
-  span.blank-bubble{
-    font-family: 'BlankSpaceGraffiti';
-  }
+   body{
+      margin: 0;
+      background-image: url("AdobeStock_281049891.jpeg");
+      background-size: cover;
+      background-attachment: fixed;
+      background-color: #F5F5F5;
+   }
 
-  #title-heart{
-    width: 41vw;
-  }
-  img#heart-graphic{
-    width: 70px;
-    height: auto;
-    float: right;
-    margin-top: -4%;
-  }
+   h1{
+      font-family: 'Brawler';
+      font-size: 3.3em;
+      line-height: 1.35;
+      color: #6A6969;
+      width: 40vw;
+      margin-left: 3vw;
+   }
+   a{
+      color: #748320;
+   }
 
-  img#grass-bottom{
-    width: 100%;
-    max-width: 100vw;
-    margin-bottom: -1vh;
-    z-index: 1;
- }
+   #zine-flex{
+      display: flex;
+      flex-direction: row;
+      height: 85vh;
+   }
 
- #project-desc{
-    width: 45vw;
- }
- #project-desc p{
-    font-family: 'Brawler';
-    font-size: .8em;
-    color: #333;
-    text-shadow: 0 0 3px #F8823Fbf;
-    margin-block-start: .5em;
-    margin-block-end: .5em;
- }
 
- #web-zine{
-    margin-left: 2vw;
- }
- .love-letters{
-    width: 37vw;
-    height: auto;
-    padding: .15vw;
-    border: solid 2px #FECA44;
-    background: rgb(254,248,248);
-    background: linear-gradient(0deg, rgba(254,248,248,0.55) 0%, rgba(255,254,254,0.8) 100%);
-    margin-bottom: 1vh;
- }
+/* FIXED OBJECTS*/
+   img#grass-bottom{
+      width: 100%;
+      max-width: 100vw;
+      position: fixed;
+      bottom: -2vh;
+      z-index: 1;
+      }
 
- .love-letters p{
-    font-family: 'Sudo';
-    font-size: 1.1em;
-    color: #333;
- }
-
- .author p::before{
-    content: "--";
- }
-
- button#generate{
+   button#generate{
     width: 75px;
     height: 76px;
     border-radius: 50%;
@@ -106,16 +77,104 @@ body{
     background: linear-gradient(0deg, rgba(163,172,107,1) 0%, rgba(255,254,254,1) 100%);
     border: solid 4px #6B8DAC; 
     float:right;
+    position: fixed;
     margin-bottom: -10vh;
     position: relative;
     z-index: 2;
- }
+   }
 
- button#generate:hover{
-    background: rgb(163,172,107, .85);
-    background: linear-gradient(0deg, rgba(163,172,107,0.85) 0%, rgba(255,254,254,0.85) 100%);
- }
- button#generate:active{
-    background: rgb(163,172,107, .7);
-    background: linear-gradient(0deg, rgba(163,172,107,0.7) 0%, rgba(255,254,254,0.7) 100%);
- }
+   button#generate:hover{
+      background: rgb(163,172,107, .85);
+      background: linear-gradient(0deg, rgba(163,172,107,0.85) 0%, rgba(255,254,254,0.85) 100%);
+   }
+   button#generate:active{
+      background: rgb(163,172,107, .7);
+      background: linear-gradient(0deg, rgba(163,172,107,0.7) 0%, rgba(255,254,254,0.7) 100%);
+   }
+
+/* ZINE INFO */
+
+   span.blank-bubble{
+      font-family: 'BlankSpaceGraffiti';
+   }
+   #title-heart{
+      width: 41vw;
+   }
+   img#heart-graphic{
+      width: 70px;
+      height: auto;
+      float: right;
+      margin-top: -4%;
+   }
+
+   #project-desc{
+      max-width: 45vw;
+      margin-left: 3vw;
+   }
+   #project-desc p{
+      font-family: 'Brawler';
+      font-size: .8em;
+      color: #333;
+      text-shadow: 0 0 3px #F8823Fbf;
+      margin-block-start: .5em;
+      margin-block-end: .5em;
+   }
+
+/* WEB ZINE */
+   #web-zine{
+      align-self: center;
+      width: -webkit-fill-available;
+   }
+
+ .love-letter{
+      width: 37vw;
+      height: auto;
+      margin: auto;
+      border: solid 2px #edcb59;
+      background: rgb(254,248,248);
+      background: linear-gradient(0deg, rgba(254,248,248,0.55) 0%, rgba(255,254,254,0.8) 100%);
+   }
+
+   .letter-content{
+      max-height: 60vh;
+      overflow-y: auto;
+
+   }
+
+   .letter-content::-webkit-scrollbar{
+      border-radius: 50px;
+   }
+   .letter-content::-webkit-scrollbar-track {
+      background: transparent;
+     }
+
+     .letter-content::-webkit-scrollbar-thumb {
+      border-radius: 40px;
+      background-color: #e3e3e3;
+    }
+
+   .top{
+      height: 40px;
+      background: #edcb59;
+   }
+   .star::after{
+      content:url('star-outline.png');
+      display: inline-block;
+      vertical-align: middle;
+      transform: scale(.45);
+      margin-left: 85%;
+   }
+   .letter-content{
+      padding: 1.33vh 1.75vw;
+      font-family: 'Sudo';
+      font-size: 1.1em;
+      color: #333;
+   }
+
+   .letter-content p{
+      
+   }
+
+   .author p::before{
+      content: "--";
+   }
