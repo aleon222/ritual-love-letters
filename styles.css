@@ -119,20 +119,30 @@
       margin-block-start: .5em;
       margin-block-end: .5em;
    }
+   #project-desc a{
+      color:#505050;
+   }
+   #project-desc a:hover{
+      color: #748320;
+   }
 
 /* WEB ZINE */
    #web-zine{
       align-self: center;
       width: -webkit-fill-available;
+      padding: 0 10vw;
    }
 
  .love-letter{
+     position: absolute;
       width: 37vw;
       height: auto;
       margin: auto;
       border: solid 2px #edcb59;
       background: rgb(254,248,248);
       background: linear-gradient(0deg, rgba(254,248,248,0.55) 0%, rgba(255,254,254,0.8) 100%);
+      
+      cursor: move;
    }
 
    .letter-content{

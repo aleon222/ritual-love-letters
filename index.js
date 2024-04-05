@@ -1,35 +1,91 @@
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
+    //New letter button
     newLetterGenerator()
+    
+    //make love letter draggable
+    // let elmnt = document.getElementsByClassName("love-letter")
+    //     // console.log("top", elmt)
+    // dragElement(elmnt);
   })
 
+
+
+//GENERATE LOVE LETTER
   function newLetterGenerator() {
-    let button = document.getElementById("generate")
-    button.addEventListener("click", () => {
-        console.log("button clicked!");
-        let newLetter = document.querySelector(".letter-content")
-        getRandomLetter()
+  let button = document.getElementById("generate")
+  button.addEventListener("click", () => {
+      // console.log("button clicked!");
+
+    //innerHTML method
+    let loveLetterDiv = `
+      <div class="love-letter" >
+        <div class="top">
+          <span class="star"></span>
+        </div>
+        <div class="letter-content">
+            <p class="quote"></p>
+            <p class="author"></p>
+        </div>
+      </div>`;
+
+    //Single Letter View
+    // let newLetter = document.querySelector(".letter-content")
+
+    // Multi Letter View
+    const newLetter = document.querySelector("#new-letter");
+    newLetter.innerHTML = loveLetterDiv;
+    console.log("loveLetterDiv",loveLetterDiv)
+    
+    //pass new letter into get random letter
+    getRandomLetter(newLetter);
+
+    //directly reference .love-letter div
+    const loveLetterDivElement = newLetter.querySelector(".love-letter");
+
+    // Apply the next color from the cycle
+    const newColor = getNextColor();
+    applyColor(loveLetterDivElement, newColor);
+
+    // add the newly created element and its content into the DOM (Multi Letter View with innerHTML)
+    const zineContainer = document.getElementById("web-zine");
+    zineContainer.appendChild(loveLetterDivElement);
+
+    // const elmnt = document.querySelector(".love-letter");
+    dragElement(newLetter);
+    console.log("element", newLetter)
     })
+
   }
 
-  function getRandomLetter(){
+  //RANDOMIZE LETTERS
+  function getRandomLetter(newLetter){
     let randomQuote = Math.floor(Math.random() * quotesArray.length)
     console.log(randomQuote, quotesArray[randomQuote]);
-    displayLetter(quotesArray[randomQuote])
+    displayLetter(quotesArray[randomQuote], newLetter);
+
+    //delete entry from array once displayed
   }
 
-  function displayLetter(quote){
+  //DISPLAY LETTERS
+  function displayLetter(quote, newLetter){
     console.log(quote)
-    let quoteContentDiv = document.querySelector(".letter-content")
-    quoteContentDiv.innerText = quote
+    // For single letter view
+    // let quoteContentDiv = document.querySelector(".letter-content")
 
-    for (var i = 0; i < quotesArray.length; i++) {
-      var letterContent = document.createElement("p");
-      letterContent.innerHTML = quotesArray[i];
-    }
+    // To add new letter to view
+    let quoteContentDiv = newLetter.querySelector(".letter-content");
+
+    quoteContentDiv.innerHTML = quote
   }
 
+
+//QUOTES
 const quotesArray = [
-	`“It doesn't matter if you think the goals are unattainable. They are. What matters is that they are impossible without the work, they cannot happen if you don't make the work.”
+  `“What if it is not an experiment, this creative life of refusal. This rarely institutionally-funded disloyal life of practice for a world as yet unnamable. This insistence on transformation when the bank account screams “conform.” What if this life as an independent experimental artist is not itself an independent experiment? What if it’s an interdependent ceremony?” 
+  
+  -- Alexis Pauline Gumbs :: "<a href="https://topicalcream.org/features/the-god-of-every-day/">The God of Every Day</a>"`,
+	
+  `“It doesn't matter if you think the goals are unattainable. They are. What matters is that they are impossible without the work, they cannot happen if you don't make the work.”
 	
   -- Awkwaeke Emezi :: "<i>Dear Senthuran: Black Spirit Memoir</i>", Execution | Dear Nonso`,
                 
@@ -68,3 +124,62 @@ const quotesArray = [
 
   -- Ayana Zaire Cotton :: "<a href="https://open.substack.com/pub/seedaschool/p/practice-doesnt-make-perfect-it-makes?r=aayhw&utm_campaign=post&utm_medium=web">Practice Doesn’t Make Perfect, It Makes Possibility</a>"` 
 ]
+
+
+//CYCLE THROUGH COLOR PALETTER
+  // Define color values
+  const colors = ['#edcb59', '#BFA1B5', '#C4F16A'];
+  let colorIndex = 0;
+
+  // Get the next color from the array
+  function getNextColor() {
+      const color = colors[colorIndex];
+      colorIndex = (colorIndex + 1) % colors.length; // Cycle through colors
+      return color;
+  }
+
+  // Function to apply the color to the "love-letter" div and its ".top" child
+  function applyColor(element, color) {
+      element.style.borderColor = color;
+      element.querySelector('.top').style.backgroundColor = color;
+  }
+
+
+//DRAG LETTER FUNCTION
+function dragElement(elmnt) {
+
+  console.log("element", elmnt)
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    //move the DIV from anywhere inside the DIV
+    elmnt.onmousedown = dragMouseDown;
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+  }
+
+  function closeDragElement() {
+    // stop moving when mouse button is released:
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
