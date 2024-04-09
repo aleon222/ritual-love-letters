@@ -39,7 +39,7 @@
       background-size: cover;
       background-attachment: fixed;
       background-color: #F5F5F5;
-      overflow-y: hidden;
+      overflow: hidden;
    }
 
    h1{
@@ -80,6 +80,7 @@
     float:right;
     position: fixed;
     margin-bottom: -10vh;
+    margin-right: 1vw;
     position: relative;
     z-index: 2;
    }
@@ -166,13 +167,14 @@
    .top{
       height: 40px;
       background: #edcb59;
+      position: relative;
    }
    .star::after{
       content:url('star-outline.png');
-      display: inline-block;
-      vertical-align: middle;
-      transform: scale(.45);
-      margin-left: 85%;
+      position: absolute;
+      top: 50%;
+      left: 85%;
+      transform: translateY(-50%) scale(.45) !important;
    }
    .letter-content{
       padding: 1.33vh 1.75vw;
