@@ -148,7 +148,6 @@
    .letter-content{
       max-height: 60vh;
       overflow-y: auto;
-
    }
 
    .letter-content::-webkit-scrollbar{

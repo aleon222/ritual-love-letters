@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // let newLetter = document.querySelector(".letter-content")
 
     // Multi Letter View
-    const newLetter = document.querySelector("#new-letter");
+    const newLetter = document.createElement("div");
     newLetter.innerHTML = loveLetterDiv;
     console.log("loveLetterDiv",loveLetterDiv)
     
@@ -49,12 +49,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // add the newly created element and its content into the DOM (Multi Letter View with innerHTML)
     const zineContainer = document.getElementById("web-zine");
     zineContainer.appendChild(loveLetterDivElement);
-
-    // const elmnt = document.querySelector(".love-letter");
-    dragElement(newLetter);
-    console.log("element", newLetter)
     })
 
+    // const elmnt = document.querySelector(".love-letter");
+    dragElement(document.querySelector(".love-letter"));
+    console.log("element", elmnt)
   }
 
   //RANDOMIZE LETTERS
@@ -148,7 +147,7 @@ const quotesArray = [
 //DRAG LETTER FUNCTION
 function dragElement(elmnt) {
 
-  console.log("element", elmnt)
+  // console.log("element", elmnt)
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
     //move the DIV from anywhere inside the DIV
     elmnt.onmousedown = dragMouseDown;
