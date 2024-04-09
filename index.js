@@ -1,11 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     //New letter button
     newLetterGenerator()
-    
-    //make love letter draggable
-    // let elmnt = document.getElementsByClassName("love-letter")
-    //     // console.log("top", elmt)
-    // dragElement(elmnt);
   })
 
 
@@ -13,9 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 //GENERATE LOVE LETTER
   function newLetterGenerator() {
   let button = document.getElementById("generate")
+  let divCounter = 0
+
   button.addEventListener("click", () => {
       // console.log("button clicked!");
-
     //innerHTML method
     let loveLetterDiv = `
       <div class="love-letter" >
@@ -34,7 +30,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Multi Letter View
     const newLetter = document.createElement("div");
     newLetter.innerHTML = loveLetterDiv;
-    console.log("loveLetterDiv",loveLetterDiv)
+    // console.log("newLEtter", newLetter, divCounter)
+    
+    newLetter.id = 'loveLetter' + divCounter;
     
     //pass new letter into get random letter
     getRandomLetter(newLetter);
@@ -46,14 +44,15 @@ document.addEventListener("DOMContentLoaded", () => {
     const newColor = getNextColor();
     applyColor(loveLetterDivElement, newColor);
 
-    // add the newly created element and its content into the DOM (Multi Letter View with innerHTML)
+    // add the newly created element and its content into the DOM (Multi Letter View)
     const zineContainer = document.getElementById("web-zine");
     zineContainer.appendChild(loveLetterDivElement);
-    })
 
-    // const elmnt = document.querySelector(".love-letter");
-    dragElement(document.querySelector(".love-letter"));
-    console.log("element", elmnt)
+    // make each new Letter draggable
+    dragElement(loveLetterDivElement);
+    
+    divCounter++
+    })
   }
 
   //RANDOMIZE LETTERS
@@ -146,11 +145,12 @@ const quotesArray = [
 
 //DRAG LETTER FUNCTION
 function dragElement(elmnt) {
-
-  // console.log("element", elmnt)
+  console.log("drag element", elmnt)
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    //move the DIV from anywhere inside the DIV
+
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.onmousedown = dragMouseDown;
+  
 
   function dragMouseDown(e) {
     e = e || window.event;
@@ -177,7 +177,7 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
-    // stop moving when mouse button is released:
+    /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
   }
