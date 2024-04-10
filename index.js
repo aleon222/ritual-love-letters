@@ -13,7 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   button.addEventListener("click", () => {
       // console.log("button clicked!");
-    //innerHTML method
     let loveLetterDiv = `
       <div class="love-letter" >
         <div class="top">
@@ -30,9 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Multi Letter View
     const newLetter = document.createElement("div");
-    newLetter.innerHTML = loveLetterDiv;
-    // console.log("newLEtter", newLetter, divCounter)
-    
+    newLetter.innerHTML = loveLetterDiv;    
     newLetter.id = 'loveLetter' + divCounter;
     
     //pass new letter into get random letter
@@ -51,8 +48,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // make each new Letter draggable
     dragElement(loveLetterDivElement);
+    bringToFront(loveLetterDivElement);
+
     divCounter++
-    })
+
+    });
   }
 
   //RANDOMIZE LETTERS
@@ -190,10 +190,10 @@ function dragElement(elmnt) {
   var zIndexCounter = 1;
 
   function bringToFront(element) {
-  zIndexCounter++;
-  // Set the z-index of the clicked element to the new counter value
-  element.style.zIndex = zIndexCounter;
-  console.log("z counter", zIndexCounter)
+    zIndexCounter++;
+    // Set the z-index of the clicked element to the new counter value
+    element.style.zIndex = zIndexCounter;
+    console.log("z counter", zIndexCounter)
   }
 
   // Attach click event listeners to all .love-letter elements
