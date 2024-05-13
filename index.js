@@ -56,6 +56,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //RANDOMIZE LETTERS
   function getRandomLetter(newLetter){
+
+    if (quotesArray.length === 0) {
+        console.log("No more quotes available.");
+        displayNoMoreQuotesMessage(newLetter);
+        // Disable button
+        document.getElementById("generate").disabled = true;
+        return;
+    }
+
     let randomQuote = Math.floor(Math.random() * quotesArray.length)
     console.log(randomQuote, quotesArray[randomQuote]);
     displayLetter(quotesArray[randomQuote], newLetter);
@@ -75,6 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     quoteContentDiv.innerHTML = quote
   }
+
+  function displayNoMoreQuotesMessage(newLetter) {
+    let quoteContentDiv = newLetter.querySelector(".letter-content");
+    quoteContentDiv.innerHTML = "No more quotes available.";
+}
 
 
 //QUOTES
