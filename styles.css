@@ -138,6 +138,7 @@
  .love-letter{
      position: absolute;
       width: 37vw;
+      min-width: 250px;
       height: auto;
       margin: auto;
       border: solid 2px #edcb59;
@@ -187,3 +188,48 @@
    .author p::before{
       content: "--";
    }
+
+  /*MOBILE POPUP*/
+   .popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgb(252,252,242);
+      padding: 20px;
+      border: 2px solid #5E782D;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      z-index: 9999;
+  }
+  .popup-close {
+   position: absolute;
+   top: 1vh;
+   right: 2.2vw;
+   cursor: pointer;
+   }
+
+   .popup-close::before,
+   .popup-close::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 15px;
+      background-color: #6A6969;
+   }
+
+   .popup-close::before {
+      transform: rotate(45deg);
+   }
+
+   .popup-close::after {
+      transform: rotate(-45deg);
+   }
+  /*mobile and tablet devices */
+  @media screen and (max-width: 768px) and (hover: none) and (pointer: coarse) {
+   /*  */
+      .popup {
+          display: block;
+      }
+  }

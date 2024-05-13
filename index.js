@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
   })
 
 
-
 //GENERATE LOVE LETTER
   function newLetterGenerator() {
   let button = document.getElementById("generate")
@@ -200,3 +199,17 @@ function dragElement(elmnt) {
   document.querySelector(".love-letter").addEventListener('click', function() {
     bringToTop(this);
   });
+
+//POPUP
+document.addEventListener("DOMContentLoaded", function() {
+  var popup = document.querySelector('.popup');
+  window.addEventListener('click', function(event) {
+      if (event.target === popup) {
+          popup.style.display = 'none';
+      }
+  });
+});
+function closePopup() {
+  var popup = document.querySelector('.popup');
+  popup.style.display = 'none';
+}
