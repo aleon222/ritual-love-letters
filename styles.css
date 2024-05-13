@@ -211,7 +211,7 @@
       position: fixed;
       top: 50%;
       left: 50%;
-      transform: translate(-53%, -50%);
+      transform: translate(-50%, -50%);
       background-color: rgb(252,252,242);
       padding: 20px;
       border: 2px solid #5E782D;
